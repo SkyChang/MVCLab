@@ -1,0 +1,56 @@
+﻿@model MVCLab.Web.Models.Customer
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>HtmlHelpFor</title>
+</head>
+<body>
+    <div> 
+        <h4>Form Demo</h4>
+        <div>
+            <h1>此頁 @Url.Action("HtmlHelpFor")</h1>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                @Html.LabelFor(m=>m.ID)
+                @Html.TextBox("ID")
+
+                @Html.LabelFor(m => m.PW)
+                @Html.Password("PW")
+
+                <br />
+
+                @Html.LabelFor(m => m.Sex, "男")
+                @Html.RadioButtonFor(m=>m.Sex,"M")
+                @Html.LabelFor(m => m.Sex, "女")
+                @Html.RadioButtonFor(m => m.Sex, "F")
+
+                <br />
+
+                @Html.LabelFor(m=>m.Add)
+                @Html.DropDownListFor(m=>m.Add, ViewBag.Adds as SelectList)
+
+                <br />
+
+                @Html.LabelFor(m=>m.Year18)
+                @Html.CheckBoxFor(m=>m.Year18)
+
+                <br />
+
+                @Html.LabelFor(m=>m.Note)
+                @Html.TextAreaFor(m => m.Note)
+
+                @Html.HiddenFor(m => m.Hide, new { Value = "Hide" })
+                <input type="submit" value="送出" />
+            }
+            
+    </div>
+</body>
+</html>

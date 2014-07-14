@@ -1,0 +1,69 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>HtmlHelp</title>
+</head>
+<body>
+    @Html.ActionLink("Home", "Home");
+
+    <h4>Begin Form Demo</h4>
+    <div>
+        @{Html.BeginForm();}
+        @{Html.EndForm();}
+    </div>
+
+    <h4>Encode & Raw Demo</h4>
+    <div>
+        沒有使用Encode  @ViewData["EncodeDemo"] <br />
+        使用Encode @Html.Encode(ViewData["EncodeDemo"]) <br />
+        使用Raw @Html.Raw(ViewData["EncodeDemo"])
+    </div>
+
+    <h4>Form Demo</h4>
+    <div>
+        <h1>此頁 @Url.Action("HtmlHelp")</h1>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            
+            @Html.Label("ID","帳號")
+            @Html.TextBox("ID")
+            
+            @Html.Label("PW","密碼")
+            @Html.Password("PW")
+            
+            <br />
+            
+            @Html.Label("Sex", "男")
+            @Html.RadioButton("Sex","M",true)
+            @Html.Label("Sex", "女") 
+            @Html.RadioButton("Sex","F")
+            
+            <br />
+            
+            @Html.Label("Add","地區")
+            @Html.DropDownList("Add", ViewBag.Adds as SelectList)
+            
+            <br />
+            
+            @Html.Label("Year18","是否大於18")
+            @Html.CheckBox("Year18")
+            
+            <br />
+            
+            @Html.Label("Note", "備註")
+            @Html.TextArea("Note")
+
+            @Html.Hidden("Hide","hide")
+        }
+    </div>
+
+</body>
+</html>
