@@ -37,6 +37,8 @@ namespace MVCLab.Web
             return new HttpStatusCodeResult(200, "Not Find");
         }
 
+        //Demo HTML Help
+
         public ActionResult HtmlHelp()
         {
             var adds = new List<string>();
@@ -57,6 +59,33 @@ namespace MVCLab.Web
         {
             return RedirectToAction("HtmlHelp");
         }
+
+        //Demo HTML Help Ajax
+        public ActionResult HtmlHelpAjax()
+        {
+            var adds = new List<string>();
+            adds.Add("台北");
+            adds.Add("台中");
+            adds.Add("高雄");
+
+            ViewBag.Adds = new SelectList(adds);
+            return View();
+        }
+
+        public ActionResult Now()
+        {
+            return Content(DateTime.Now.ToString());
+        }
+
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public ActionResult HtmlHelpAjax(FormCollection f)
+        {
+            var id = f[1];
+            return Content(id + "Success");
+        }
+
+        //Demo Html Help For
 
         public ActionResult HtmlHelpFor()
         {
@@ -82,5 +111,29 @@ namespace MVCLab.Web
         {
             return RedirectToAction("HtmlHelpFor");
         }
+
+        //Demo Layout
+
+        public ActionResult HaveLayout()
+        {
+            return View();
+        }
+
+
+        //Demo PartialView
+
+        public ActionResult HavePartialView()
+        {
+            return View();
+        }
+
+      
+        [ChildActionOnly]
+        public ActionResult NowPartial()
+        {
+            ViewBag.Now = DateTime.Now;
+            return PartialView("_NowPartial");
+        }
+
     }
 }
