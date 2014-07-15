@@ -1,0 +1,29 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>HavePartialView</title>
+</head>
+<body>
+    <div>
+        @Html.Partial("_HelloPartial")
+
+        @{
+            Html.RenderPartial("_HelloPartial");
+        }
+
+
+        @Html.Action("NowPartial")
+
+        <br />
+
+        @{Html.RenderAction("NowPartial");}
+    </div>
+</body>
+</html>

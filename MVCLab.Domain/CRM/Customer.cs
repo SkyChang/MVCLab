@@ -1,13 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
-namespace MVCLab.Web.Model
+namespace MVCLab.Domain.CRM
 {
-    public class Cust
+    public class Customer
     {
+        public int ID { get; set; }
+
+        [Required]
         [DisplayName("UserName")]
         public string UserName {get; set;}
 
@@ -25,6 +30,9 @@ namespace MVCLab.Web.Model
 
         [DisplayName("備註")]
         public string Note { get; set;}
+
+        //[NotMapped]
+        public string Note2 { get; set; }
 
         public string Hide { get; set;}
 

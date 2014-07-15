@@ -1,4 +1,6 @@
-﻿using MVCLab.Web.Models;
+﻿using MVCLab.Domain.CRM;
+using MVCLab.Infrastructure.Data.CRM;
+using MVCLab.Web.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +14,7 @@ namespace MVCLab.Web
         // GET: Home
         public ActionResult Index()
         {
+            @ViewData["Hello"] = "Hello";
             //return Content("Hello!!");
             //return File(Server.MapPath("~/bootcamp.png"), "image/png");
             //return File(Server.MapPath("~/bootcamp.png"), "image/png","測試.png");
@@ -89,7 +92,7 @@ namespace MVCLab.Web
 
         public ActionResult HtmlHelpFor()
         {
-            var cust = new Customer();
+            var cust = new Cust();
 
             cust.Hide = "Hide";
 
@@ -107,7 +110,7 @@ namespace MVCLab.Web
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult HtmlHelpFor(Customer cust)
+        public ActionResult HtmlHelpFor(Cust cust)
         {
             return RedirectToAction("HtmlHelpFor");
         }
@@ -133,6 +136,46 @@ namespace MVCLab.Web
         {
             ViewBag.Now = DateTime.Now;
             return PartialView("_NowPartial");
+        }
+
+
+        //Demo Html HelpFor for EF
+
+        public ActionResult HtmlHelpForEF()
+        {
+            var cust = new Customer();
+
+            cust.Hide = "Hide";
+
+            var adds = new List<string>();
+            adds.Add("台北");
+            adds.Add("台中");
+            adds.Add("高雄");
+
+            ViewBag.Adds = new SelectList(adds);
+
+            return View(cust);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult HtmlHelpForEF(Customer cust)
+        {
+            if(!ModelState.IsValid)
+            {
+                var adds = new List<string>();
+                adds.Add("台北");
+                adds.Add("台中");
+                adds.Add("高雄");
+
+                ViewBag.Adds = new SelectList(adds);
+
+                return View(cust);
+            }
+            IUnitOfWork uow = new UnitOfWork();
+            uow.Repository<Customer>().Insert(cust);
+            uow.Save();
+            return RedirectToAction("HtmlHelpForEF");
         }
 
     }

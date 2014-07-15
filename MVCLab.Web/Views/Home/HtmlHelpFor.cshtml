@@ -1,4 +1,4 @@
-﻿@model MVCLab.Web.Models.Customer
+﻿@model MVCLab.Web.Model.Cust
 @{
     Layout = null;
 }
@@ -19,8 +19,8 @@
             {
                 @Html.AntiForgeryToken()
 
-                @Html.LabelFor(m=>m.ID)
-                @Html.TextBox("ID")
+                @Html.LabelFor(m=>m.UserName)
+                @Html.TextBox("UserName")
 
                 @Html.LabelFor(m => m.PW)
                 @Html.Password("PW")

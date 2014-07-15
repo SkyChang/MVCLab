@@ -11,7 +11,9 @@
     <title>HtmlHelp</title>
 </head>
 <body>
-    @Html.ActionLink("Home", "Home");
+    @Url.Action("HtmlHelp")
+
+    @Html.ActionLink("Home2", "Index")
 
     <h4>Begin Form Demo</h4>
     <div>
@@ -33,7 +35,7 @@
         {
             @Html.AntiForgeryToken()
             
-            @Html.Label("ID","帳號")
+            @Html.Label("ID", "帳號", new { style="color:Red" })
             @Html.TextBox("ID")
             
             @Html.Label("PW","密碼")
@@ -62,6 +64,8 @@
             @Html.TextArea("Note")
 
             @Html.Hidden("Hide","hide")
+            
+            <input type="submit" value="送出" />
         }
     </div>
 
