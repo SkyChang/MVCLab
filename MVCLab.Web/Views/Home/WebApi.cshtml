@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "WebApi";
+}
+
+<h2>WebApi</h2>
+
+<div ng-app="crudApp" ng-controller="crud">
+    <form>
+        <label>ID</label>
+        <input type="text" ng-model="cust.UserName"/>
+        <label>PW</label>
+        <input type="text" ng-model="cust.PW" />
+        <button ng-click="add()">新增</button>
+        <button ng-click="update()">更新</button>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <td>UserName</td><td>PW</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="cust in custs">
+                <td>{{cust.UserName}}</td>
+                <td>{{cust.PW}}</td>
+                <td><span ng-click="del(cust.ID)">刪除</span></td>
+                <td><span ng-click="edit(cust.ID)">修改</span></td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+@section scripts{
+<script src="~/Scripts/angular-resource.js"></script>
+<script src="~/Scripts/app/CRUDApp/crud-app.js"></script>
+<script src="~/Scripts/app/CRUDApp/Services/customer-services.js"></script>
+<script src="~/Scripts/app/CRUDApp/Controllers/crud-controller.js"></script>
+}

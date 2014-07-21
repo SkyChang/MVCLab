@@ -178,5 +178,10 @@ namespace MVCLab.Web
             return RedirectToAction("HtmlHelpForEF");
         }
 
+        public ActionResult WebApi()
+        {
+            return View();
+        }
+
     }
 }
