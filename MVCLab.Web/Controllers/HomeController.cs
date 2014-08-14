@@ -1,6 +1,5 @@
 ﻿using MVCLab.Domain.CRM;
 using MVCLab.Infrastructure.Data.CRM;
-using MVCLab.Web.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +10,9 @@ namespace MVCLab.Web
 {
     public class HomeController : Controller
     {
-        // GET: Home
+        #region DemoResult
+        
+        
         public ActionResult Index()
         {
             @ViewData["Hello"] = "Hello";
@@ -26,22 +27,32 @@ namespace MVCLab.Web
             //return View("Index");
         }
 
+
+        public ActionResult Now()
+        {
+            return Content(DateTime.Now.ToString());
+        }
+
+        public ActionResult Error404()
+        {
+            //eturn HttpNotFound("錯誤!!"); //404
+            //return new HttpUnauthorizedResult(); //401
+            return new HttpStatusCodeResult(200, "Not Find");
+        }
+        #endregion
+
+
+        #region Demo FormCollection
         [HttpPost]
         public ActionResult Index(FormCollection f)
         {
             var aa = f["name"];
             return View();
         }
+        #endregion
 
-        public ActionResult Error404()
-        {
-            //return HttpNotFound(); //404
-            //return new HttpUnauthorizedResult(); //401
-            return new HttpStatusCodeResult(200, "Not Find");
-        }
 
-        //Demo HTML Help
-
+        #region Demo HTML Helper
         public ActionResult HtmlHelp()
         {
             var adds = new List<string>();
@@ -63,6 +74,7 @@ namespace MVCLab.Web
             return RedirectToAction("HtmlHelp");
         }
 
+
         //Demo HTML Help Ajax
         public ActionResult HtmlHelpAjax()
         {
@@ -75,11 +87,6 @@ namespace MVCLab.Web
             return View();
         }
 
-        public ActionResult Now()
-        {
-            return Content(DateTime.Now.ToString());
-        }
-
         [ValidateAntiForgeryToken]
         [HttpPost]
         public ActionResult HtmlHelpAjax(FormCollection f)
@@ -88,11 +95,11 @@ namespace MVCLab.Web
             return Content(id + "Success");
         }
 
-        //Demo Html Help For
+        //Demo Html HelpFor
 
         public ActionResult HtmlHelpFor()
         {
-            var cust = new Cust();
+            var cust = new Customer();
 
             cust.Hide = "Hide";
 
@@ -110,32 +117,9 @@ namespace MVCLab.Web
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult HtmlHelpFor(Cust cust)
+        public ActionResult HtmlHelpFor(Customer cust)
         {
             return RedirectToAction("HtmlHelpFor");
-        }
-
-        //Demo Layout
-
-        public ActionResult HaveLayout()
-        {
-            return View();
-        }
-
-
-        //Demo PartialView
-
-        public ActionResult HavePartialView()
-        {
-            return View();
-        }
-
-      
-        [ChildActionOnly]
-        public ActionResult NowPartial()
-        {
-            ViewBag.Now = DateTime.Now;
-            return PartialView("_NowPartial");
         }
 
 
@@ -161,7 +145,7 @@ namespace MVCLab.Web
         [ValidateAntiForgeryToken]
         public ActionResult HtmlHelpForEF(Customer cust)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 var adds = new List<string>();
                 adds.Add("台北");
@@ -178,10 +162,40 @@ namespace MVCLab.Web
             return RedirectToAction("HtmlHelpForEF");
         }
 
+        #endregion
+
+
+
+        #region Demo Layout
+        public ActionResult HaveLayout()
+        {
+            return View();
+        }
+
+
+        //Demo PartialView
+
+        public ActionResult HavePartialView()
+        {
+            return View();
+        }
+
+
+        [ChildActionOnly]
+        public ActionResult NowPartial()
+        {
+            ViewBag.Now = DateTime.Now;
+            return PartialView("_NowPartial");
+        }
+        #endregion
+
+
+        #region Demo Web Api & AngularJS
         public ActionResult WebApi()
         {
             return View();
         }
+        #endregion
 
     }
 }

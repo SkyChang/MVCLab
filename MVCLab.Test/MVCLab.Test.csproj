@@ -39,7 +39,11 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
+    <Reference Include="Moq">
+      <HintPath>..\packages\Moq.4.2.1408.0717\lib\net40\Moq.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.0\lib\net45\System.Web.Helpers.dll</HintPath>
@@ -81,6 +85,8 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="LoginForDBControllerTest.cs" />
+    <Compile Include="LoginControllerTest.cs" />
     <Compile Include="HomeControllerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -89,6 +95,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MVCLab.Domain\MVCLab.Domain.csproj">
+      <Project>{dab075af-5dda-4d41-8ec5-46a48e2d554a}</Project>
+      <Name>MVCLab.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MVCLab.Infrastructure.Data\MVCLab.Infrastructure.Data.csproj">
+      <Project>{65bb5015-e3c8-4144-bcc6-99dd4e5c7a02}</Project>
+      <Name>MVCLab.Infrastructure.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MVCLab.Web\MVCLab.Web.csproj">
       <Project>{6609d08e-2b10-46b0-8695-1922adb091c1}</Project>
       <Name>MVCLab.Web</Name>

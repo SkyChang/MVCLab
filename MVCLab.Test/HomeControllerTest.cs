@@ -1,9 +1,10 @@
 ﻿using MVCLab.Web;
 using System;
+using System.Collections.Specialized;
 using System.Web.Mvc;
 using Xunit;
 
-namespace UnitTestProject1
+namespace MVCLab.Test
 {
 
     public class HomeController_Test
