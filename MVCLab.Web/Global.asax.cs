@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using System.Web.Http;
+using MVCLab.Web.App_Start;
 
 namespace MVCLab.Web
 {
@@ -17,6 +18,9 @@ namespace MVCLab.Web
             GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            AutofacConfig.RegisterAutofac();
+
             
         }
     }

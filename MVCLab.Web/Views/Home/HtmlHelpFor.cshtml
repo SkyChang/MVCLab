@@ -1,56 +1,55 @@
 ﻿@model MVCLab.Domain.CRM.Customer
-@{
-    Layout = null;
-}
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>HtmlHelpFor</title>
-</head>
-<body>
-    <div> 
-        <h4>Form Demo</h4>
+    @{
+        Layout = null;
+    }
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>HtmlHelpFor</title>
+    </head>
+    <body>
         <div>
-            <h1>此頁 @Url.Action("HtmlHelpFor")</h1>
-            @using (Html.BeginForm())
-            {
-                @Html.AntiForgeryToken()
+            <h4>Form Demo</h4>
+            <div>
+                <h1>此頁 @Url.Action("HtmlHelpFor")</h1>
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
 
-                @Html.LabelFor(m=>m.UserName)
-                @Html.TextBox("UserName")
+                    @Html.LabelFor(m => m.UserName)
+                    @Html.TextBox("UserName")
 
-                @Html.LabelFor(m => m.PW)
-                @Html.Password("PW")
+                    @Html.LabelFor(m => m.PW)
+                    @Html.Password("PW")
 
-                <br />
+                    <br />
 
-                @Html.LabelFor(m => m.Sex, "男")
-                @Html.RadioButtonFor(m=>m.Sex,"M")
-                @Html.LabelFor(m => m.Sex, "女")
-                @Html.RadioButtonFor(m => m.Sex, "F")
+                    @Html.LabelFor(m => m.Sex, "男")
+                    @Html.RadioButtonFor(m => m.Sex, "M")
+                    @Html.LabelFor(m => m.Sex, "女")
+                    @Html.RadioButtonFor(m => m.Sex, "F")
 
-                <br />
+                    <br />
 
-                @Html.LabelFor(m=>m.Add)
-                @Html.DropDownListFor(m=>m.Add, ViewBag.Adds as SelectList)
+                    @Html.LabelFor(m => m.Add)
+                    @Html.DropDownListFor(m => m.Add, ViewBag.Adds as SelectList)
 
-                <br />
+                    <br />
 
-                @Html.LabelFor(m=>m.Year18)
-                @Html.CheckBoxFor(m=>m.Year18)
+                    @Html.LabelFor(m => m.Year18)
+                    @Html.CheckBoxFor(m => m.Year18)
 
-                <br />
+                    <br />
 
-                @Html.LabelFor(m=>m.Note)
-                @Html.TextAreaFor(m => m.Note)
+                    @Html.LabelFor(m => m.Note)
+                    @Html.TextAreaFor(m => m.Note)
 
-                @Html.HiddenFor(m => m.Hide, new { Value = "Hide" })
-                <input type="submit" value="送出" />
-            }
-            
-    </div>
-</body>
+                    @Html.HiddenFor(m => m.Hide, new { Value = "Hide" })
+                    <input type="submit" value="送出" />
+                }
+
+            </div>
+        </div>
+    </body>
 </html>

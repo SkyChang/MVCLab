@@ -8,16 +8,11 @@ using System.Web.Mvc;
 
 namespace MVCLab.Web.Controllers
 {
-    public class LoginForDBController : Controller
+    public class LoginAutofacController : Controller
     {
         private IUnitOfWork _uow;
 
-        public LoginForDBController():this(new UnitOfWork())
-        {
-
-        }
-
-        public LoginForDBController(IUnitOfWork unitOfWork) 
+        public LoginAutofacController(IUnitOfWork unitOfWork) 
         {
             _uow = unitOfWork;
         }
