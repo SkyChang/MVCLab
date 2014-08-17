@@ -52,6 +52,7 @@
     <Compile Include="CRM\Mapping\CustomerMapper.cs" />
     <Compile Include="CRM\MVCLabContext.cs" />
     <Compile Include="CRM\UnitOfWork.cs" />
+    <Compile Include="Extension\CustomerRepositoryExtension.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

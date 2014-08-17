@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CRM\Customer.cs" />
+    <Compile Include="CRM\Metadata\CustomerMetaData.cs" />
     <Compile Include="CRM\Orders.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
