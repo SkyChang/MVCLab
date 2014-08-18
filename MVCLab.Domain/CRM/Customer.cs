@@ -18,7 +18,6 @@ namespace MVCLab.Domain.CRM
 
         public string Sex {get; set;}
 
-         [DisplayName("地區")]
         public string Add {get;set;}
 
         public bool Year18 {get;set;}

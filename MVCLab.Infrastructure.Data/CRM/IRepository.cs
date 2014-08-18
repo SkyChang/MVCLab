@@ -18,5 +18,7 @@ namespace MVCLab.Infrastructure.Data.CRM
         void Delete(object id);
         void Delete(TEntity entity);
         void Insert(TEntity entity);
+
+        void Test();
     }
 }

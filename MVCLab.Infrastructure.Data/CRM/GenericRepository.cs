@@ -104,5 +104,11 @@ namespace MVCLab.Infrastructure.Data.CRM
             dbSet.Attach(entityToUpdate);
             context.Entry(entityToUpdate).State = EntityState.Modified;
         }
+
+
+        public void Test()
+        {
+
+        }
     }
 }

@@ -11,12 +11,21 @@
     <title>Index</title>
 </head>
 <body>
-    <div> 
+    <div>
+
+        @if (ViewData["name"].ToString() == "Sky")
+        {
+            ViewData["name"] = "Bob22";
+            <span>is Bob</span>
+            
+        }
+        
+        @ViewData["name"]
+
         <h1>Hello World</h1>
         <form method="post">
             <input type="text" name="name" />
             <input type="submit" />
-
         </form>
     </div>
 </body>
