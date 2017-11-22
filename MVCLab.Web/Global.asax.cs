@@ -23,5 +23,12 @@ namespace MVCLab.Web
 
             
         }
+
+        [HandleError(ExceptionType = typeof(NullReferenceException), View = "NullReferenceException")]
+        //customErrors mode="On"
+        public ActionResult Exception()
+        {
+            throw new NullReferenceException();
+        }
     }
 }
